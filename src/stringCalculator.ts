@@ -15,7 +15,21 @@ class Calculator {
     if (!input_str) {
       return 0;
     } 
-    return -1;
+
+    var delimiter = ",";
+
+    //split the string based on delimiter
+    const numbers = input_str.split(delimiter);
+    let sum = 0;
+
+    //calculate the sum of the numbers
+    for(let number of numbers){
+      // console.log(number);
+      let value = parseInt(number);
+      sum += value;
+    } 
+
+    return sum;
 }
 } 
 export default Calculator;
