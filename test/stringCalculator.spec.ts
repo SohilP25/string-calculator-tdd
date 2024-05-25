@@ -1,24 +1,29 @@
 import Calculator from "../src/stringCalculator";
 
-const calculator = new Calculator();
+
+// function to assert the add function value
+function assertValue(input_string:string,expected:number){
+  const calculator = new Calculator(input_string);
+  expect(calculator.add()).toBe(expected);
+}
 
 describe("Diffrent count of number into string", () => {
-  
+
   test("Empty string returns zero", () => {
-    expect(calculator.add("")).toBe(0);
-    expect(calculator.add("  ")).toBe(0);
+    assertValue("",0);
+    assertValue("  ",0);
   });
 
   test("single number in the string", () => {
-    expect(calculator.add("1")).toBe(1);
+    assertValue("1",1);
   });
 
   test("two numbers in the string", () => {
-    expect(calculator.add("1,2")).toBe(3);
+    assertValue("1,2",3);
   });
 
   test("multiple numbers in the string", () => {
-    expect(calculator.add("4,22,0,33,53,32,3")).toBe(147);
+    assertValue("4,22,0,33,53,32,3",147);
   });
 
 });
