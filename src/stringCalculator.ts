@@ -37,7 +37,8 @@ class Calculator {
     //split the string based on delimiter
     const numbers = this.input_str.split(delimiter);
     let sum = 0;
-
+    //Negative numbers message
+    let negativeNumbersError = "";
 
     //calculate the sum of the numbers
     for(let number of numbers){
@@ -45,9 +46,13 @@ class Calculator {
       let value = parseInt(number);
       // handle new lines at end or beginning of string
       if(isNaN(value)) throw Error("Invalid input");
+      // handle negative numbers
+      if(value < 0) negativeNumbersError += number + ",";
       sum += value;
     } 
 
+    // throw error if negative numbers are present
+    if(negativeNumbersError != "") throw Error("Negatives not allowed : " + negativeNumbersError);
     return sum;
 }
 } 

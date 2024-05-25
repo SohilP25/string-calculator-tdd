@@ -50,3 +50,13 @@ describe('Handle different delimiters', () => {
     assertValue("//.\n3.2.5.6",16);
   });
 });
+
+describe('Handle negative numbers', () => {
+  test('Handle negative numbers', () => {
+    assertValue("1,-2",-1,"Negatives not allowed : -2");
+  });
+  
+  test('Handle negative numbers', () => {
+    assertValue("//;\n1;-2;3;-4",-1,"Negatives not allowed : -2,-4");
+  });
+});
