@@ -41,3 +41,12 @@ describe('Handle new lines in string', () => {
     assertValue("22\n2,32\n",-1,"Invalid input");
   });
 });
+
+describe('Handle different delimiters', () => {
+  test('Handle different delimiters', () => {
+    assertValue("//;\n1;2",3);
+  });
+  test('Handle different delimiters', () => {
+    assertValue("//.\n3.2.5.6",16);
+  });
+});
