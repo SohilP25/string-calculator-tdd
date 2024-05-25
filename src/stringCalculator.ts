@@ -16,6 +16,8 @@ class Calculator {
       @return : number - Sum of number as output will be an Integer
     */
 
+    // Handling new line numbers
+    this.input_str = this.input_str.replace(/\n/g, ",");
     // Removing white spaces 
     this.input_str = this.input_str.replace(/\s/g, "");
 
@@ -32,8 +34,9 @@ class Calculator {
 
     //calculate the sum of the numbers
     for(let number of numbers){
-      // console.log(number);
+      console.log(number);
       let value = parseInt(number);
+      if(isNaN(value)) throw Error("Invalid input");
       sum += value;
     } 
 
