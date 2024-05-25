@@ -1,6 +1,6 @@
 /*
-** calculate the sum of the numbers in the string 
-*/
+ ** calculate the sum of the numbers in the string
+ */
 class Calculator {
   /*
       @param input_str : string - Input must be in string 
@@ -16,23 +16,38 @@ class Calculator {
       @return : number - Sum of number as output will be an Integer
     */
 
-    var delimiter = ",";
-    // Handling different delimiters
-    if(this.input_str.startsWith("//")){
-      delimiter = this.input_str[2];
-      this.input_str = this.input_str.substring(4);
-    }
-    console.log("input string is : " + this.input_str);
-
-    // Handling new line numbers
-    this.input_str = this.input_str.replace(/\n/g, ",");
-    // Removing white spaces 
-    this.input_str = this.input_str.replace(/\s/g, "");
+    // Removing white spaces
+    this.input_str = this.input_str.replace(/ /g, "");
 
     // Empty string
     if (!this.input_str) {
       return 0;
-    } 
+    }
+
+    let delimiter = ",";
+
+    //si = start index, ei = end index
+    let si = this.input_str.indexOf("//");
+    let ei = this.input_str.indexOf("\n");
+
+    // Handling different delimiters of any length
+    if (si != -1) {
+      delimiter =
+        this.input_str[si + 2] == "["
+          ? this.input_str.slice(si + 3, ei - 1)
+          : this.input_str.slice(si + 2, ei);
+      console.log("delimiter is : " + delimiter);
+
+      // Removing the delimiter prefix part
+      this.input_str = this.input_str.substring(ei + 1);
+      
+      console.log("input string is : " + this.input_str);
+    }
+    
+
+
+    // Handling new line numbers
+    this.input_str = this.input_str.replace(/\n/g, delimiter);
 
     //split the string based on delimiter
     const numbers = this.input_str.split(delimiter);
@@ -45,17 +60,18 @@ class Calculator {
       console.log(number);
       let value = parseInt(number);
       // handle new lines at end or beginning of string
-      if(isNaN(value)) throw Error("Invalid input");
+      if (isNaN(value)) throw Error("Invalid input");
       // handle negative numbers
-      else if(value < 0) negativeNumbersError += number + ",";
+      else if (value < 0) negativeNumbersError += number + ",";
       // Ignore numbers greater than 1000
-      else if(value > 1000) continue;
+      else if (value > 1000) continue;
       else sum += value;
-    } 
+    }
 
     // throw error if negative numbers are present
-    if(negativeNumbersError != "") throw Error("Negatives not allowed : " + negativeNumbersError);
+    if (negativeNumbersError != "")
+      throw Error("Negatives not allowed : " + negativeNumbersError);
     return sum;
+  }
 }
-} 
 export default Calculator;

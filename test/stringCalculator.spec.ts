@@ -68,3 +68,14 @@ describe('Ignore number bigger than 1000.', () => {
     assertValue("//:\n21:2333:5:40: 1000:4 ",1070)
   });
 });
+
+describe('Handle different delimiters of any length', () => {
+  test('Handle different delimiters of any length', () => {
+    assertValue("//[***]\n1***2***3",6);
+  }
+  );
+  test('Handle different delimiters of any length', () => {
+    assertValue("//[**]\n1**2**3",6);
+  }
+  );  
+});
