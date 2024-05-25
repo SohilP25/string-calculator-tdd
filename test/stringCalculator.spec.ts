@@ -55,8 +55,16 @@ describe('Handle negative numbers', () => {
   test('Handle negative numbers', () => {
     assertValue("1,-2",-1,"Negatives not allowed : -2");
   });
-  
+
   test('Handle negative numbers', () => {
     assertValue("//;\n1;-2;3;-4",-1,"Negatives not allowed : -2,-4");
+  });
+});
+
+
+describe('Ignore number bigger than 1000.', () => {
+  test('Number bigger than 1000?, Ignored.', () => {
+    assertValue("4,1001,2",6);
+    assertValue("//:\n21:2333:5:40: 1000:4 ",1070)
   });
 });
