@@ -11,6 +11,8 @@ The string calculator has the following features:
 3. It supports different delimiters.
 4. It throws an exception for negative numbers and shows all negative numbers in the error message.
 5. It ignores numbers greater than 1000.
+6. It can handle different delimiter of any length.
+7. It can handle multiple delimiters of different lengths.
 
 ## Local Setup
 
