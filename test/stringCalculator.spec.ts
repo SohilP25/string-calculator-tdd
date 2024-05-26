@@ -79,3 +79,14 @@ describe('Handle different delimiters of any length', () => {
   }
   );  
 });
+
+describe('Handle multiple delimiters', () => {
+  test('Handle multiple delimiters', () => {
+    assertValue("//[*][%]\n1*2%3",6);
+  }
+  );
+  test('Handle multiple delimiters of different length', () => {
+    assertValue("//[**][%%]\n1**2%%3",6);
+  }
+  );  
+});
